@@ -1,8 +1,9 @@
-export const categories: string[] = [
+const categories: string[] = [
   "Home",
-  "About",
+  "Services",
   "Portofolio",
   "Contact",
+  "About",
 ];
 
-
+export default categories;

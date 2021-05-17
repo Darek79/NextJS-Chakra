@@ -14,12 +14,18 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import React, {useState, useRef, Fragment} from "react";
+import React, {
+  useState,
+  useRef,
+  Fragment,
+  useEffect,
+} from "react";
 import {HamburgerIcon} from "@chakra-ui/icons";
 import Image from "next/image";
-import {categories} from "./../../page_defaults/defaults";
+import categories from "./../../page_defaults/defaults";
 import SideBar from "./SideBar";
 import TextElement from "./TextElement";
+import {v4} from "uuid";
 
 interface CompProps {
   bg?: string;
@@ -29,7 +35,6 @@ interface CompProps {
   bgSideBar?: string;
   txtColorSideBar?: string;
   txtSizeSideBar?: string;
-  mediaQuerySize?: boolean;
 }
 
 // bgSideBar='gray.900'
@@ -44,12 +49,20 @@ export default function NavBar({
   txtColor,
   txtColorSideBar,
   iconColor,
-  mediaQuerySize,
 }: CompProps): JSX.Element {
-  const [isSmallerThan880] = useMediaQuery(
-    "(max-width:880px)"
-  );
+  const [innerW, setInnerW] = useState<number | null>(null);
   const {isOpen, onOpen, onClose} = useDisclosure();
+
+  function resizeW(){
+    console.log(window.innerWidth)
+  }
+
+  useEffect(() => {
+    setInnerW(window.innerWidth);
+    window.addEventListener('resize',resizeW)
+    console.log(window.innerWidth);
+    return ()=> window.removeEventListener('resize',resizeW)
+  }, []);
   return (
     <Fragment>
       <Drawer
@@ -60,7 +73,7 @@ export default function NavBar({
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody
-            bg={bgSideBar}
+            bg={bg}
             display='flex'
             flexDir='column'
             alignItems='center'
@@ -68,6 +81,7 @@ export default function NavBar({
             {categories &&
               categories.map((el) => (
                 <TextElement
+                  key={v4()}
                   margin={5}
                   txtColor={txtColorSideBar}
                   txtSize={txtSizeSideBar}
@@ -84,16 +98,15 @@ export default function NavBar({
         bg={bg}
         pos='fixed'
         zIndex={2}>
-        <Box w='15%' h='100%' minW={44}>
-          <Box
-            h='100%'
-            bgRepeat='no-repeat'
-            bgImage="url('logo.svg')"
-            bgPosition='center'
-          />
-        </Box>
+        <Box
+          w='15%'
+          h='100%'
+          minW={44}
+          bgRepeat='no-repeat'
+          bgImage="url('logo.svg')"
+          bgPosition='center'></Box>
         <Box w='100%' h='100%'>
-          {!mediaQuerySize ? (
+          {innerW > 880 ? (
             <Flex
               w='100%'
               h='100%'
@@ -101,7 +114,9 @@ export default function NavBar({
               justify='flex-end'>
               {categories &&
                 categories.map((el) => (
-                  <Link key={el} href={`/${el}`}>
+                  <Link
+                    key={el}
+                    href={el === "Home" ? "/" : `/${el}`}>
                     <Box px={4}>
                       <Text
                         color={txtColor}
@@ -131,3 +146,33 @@ export default function NavBar({
     </Fragment>
   );
 }
+
+// {!isSmallerThan880 ? (
+//   <Flex
+//     w='100%'
+//     h='100%'
+//     align='center'
+//     justify='flex-end'>
+//     {categories &&
+//       categories.map((el) => (
+//         <Link
+//           key={el}
+//           href={el === "Home" ? "/" : `/${el}`}>
+//           <Box px={4}>
+//             {console.log(el)}
+//             <Text
+//               color={txtColor}
+//               fontSize={txtSize}
+//               letterSpacing={1}
+//               _hover={{
+//                 color: "yellow.300",
+//                 cursor: "pointer",
+//                 transition: "all 350ms",
+//               }}>
+//               {el.toUpperCase()}
+//             </Text>
+//           </Box>
+//         </Link>
+//       ))}
+//   </Flex>
+// ) : undefined}

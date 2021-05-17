@@ -17,17 +17,26 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import TextElement from "./../components/Elements/TextElement";
+import Services from "./../components/Elements/PageWrapper";
 import NavBar from "./../components/Elements/Navbar";
 export default function Home(): JSX.Element {
   const [isSmallerThan880] = useMediaQuery(
     "(max-width:880px)"
   );
+
+  function switcher(
+    state: boolean,
+    arg1: any,
+    arg2: any
+  ): any {
+    return !state ? arg1 : arg2;
+  }
   return (
     <Fragment>
       <Head>
         <meta charSet='UTF-8' />
         <meta
-          http-equiv='X-UA-Compatible'
+          httpEquiv='X-UA-Compatible'
           content='IE=edge'
         />
         <meta
@@ -44,7 +53,6 @@ export default function Home(): JSX.Element {
         txtColor='gray.50'
         txtColorSideBar='gray.50'
         iconColor='gray.50'
-        mediaQuerySize={isSmallerThan880}
       />
       <Flex
         w='100vw'
@@ -53,38 +61,38 @@ export default function Home(): JSX.Element {
         bgRepeat='no-repeat'
         bgPosition='left'
         bgSize='cover'
-        justify={!isSmallerThan880 ? "start" : "center"}
+        justify={"start"}
         align='center'>
         <Flex flexDir='column'>
-          <Text
-            mx={!isSmallerThan880 ? Number(48) : Number(0)}
-            fontWeight='bold'
-            h={!isSmallerThan880 ? "60px" : "30px"}
-            color='gray.50'
-            fontSize={!isSmallerThan880 ? "7xl" : "3xl"}
-            letterSpacing={2}>
-            TECHNOLOGY
-          </Text>
-          <Text
-            mx={!isSmallerThan880 ? Number(48) : Number(0)}
-            fontWeight='bold'
-            h={!isSmallerThan880 ? "60px" : "30px"}
-            color='gray.50'
-            fontSize={!isSmallerThan880 ? "7xl" : "3xl"}
-            letterSpacing={2}>
-            & VISUAL AGENCY
-          </Text>
-          <Button
-            size='xs'
-            w={!isSmallerThan880 ? "40%" : "100%"}
-            mx={!isSmallerThan880 ? Number(48) : Number(0)}
-            fontSize={!isSmallerThan880 ? "4xl" : "3xl"}
-            my={!isSmallerThan880 ? Number(40) : Number(5)}
-            variant='link'>
+          <Text letterSpacing={2}>TECHNOLOGY</Text>
+          <Text letterSpacing={2}>& VISUAL AGENCY</Text>
+          <Button size='xs' variant='link'>
             LEARN MORE
           </Button>
         </Flex>
       </Flex>
     </Fragment>
   );
+}
+
+{
+  /* <Services
+width='100vw'
+height='100vh'
+title='Services'
+breakPoint={isSmallerThan880}>
+kick
+</Services> */
+}
+
+{
+  /* <NavBar
+        bg='gray.900'
+        bgSideBar='gray.900'
+        txtSize='md'
+        txtSizeSideBar='4xl'
+        txtColor='gray.50'
+        txtColorSideBar='gray.50'
+        iconColor='gray.50'
+      /> */
 }

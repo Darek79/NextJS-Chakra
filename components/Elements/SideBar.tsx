@@ -13,7 +13,8 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import {categories} from "./../../page_defaults/defaults";
+import {v4} from "uuid";
+import categories from "./../../page_defaults/defaults";
 interface CompProps {
   bgSideBar?: string;
   txtColorSideBar?: string;
@@ -42,6 +43,7 @@ export default function SideBar({
           {categories &&
             categories.map((el) => (
               <Text
+                key={v4()}
                 m={5}
                 color={txtColorSideBar}
                 fontSize={txtSizeSideBar}
