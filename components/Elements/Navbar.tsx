@@ -19,6 +19,7 @@ import React, {
   useRef,
   Fragment,
   useEffect,
+  useCallback,
 } from "react";
 import {HamburgerIcon} from "@chakra-ui/icons";
 import Image from "next/image";
@@ -35,6 +36,8 @@ interface CompProps {
   bgSideBar?: string;
   txtColorSideBar?: string;
   txtSizeSideBar?: string;
+  mediaQuery?: number;
+  defaultBreakpoint?: number;
 }
 
 // bgSideBar='gray.900'
@@ -49,20 +52,11 @@ export default function NavBar({
   txtColor,
   txtColorSideBar,
   iconColor,
+  mediaQuery,
+  defaultBreakpoint,
 }: CompProps): JSX.Element {
-  const [innerW, setInnerW] = useState<number | null>(null);
   const {isOpen, onOpen, onClose} = useDisclosure();
 
-  function resizeW(){
-    console.log(window.innerWidth)
-  }
-
-  useEffect(() => {
-    setInnerW(window.innerWidth);
-    window.addEventListener('resize',resizeW)
-    console.log(window.innerWidth);
-    return ()=> window.removeEventListener('resize',resizeW)
-  }, []);
   return (
     <Fragment>
       <Drawer
@@ -97,7 +91,7 @@ export default function NavBar({
         h='3rem'
         bg={bg}
         pos='fixed'
-        zIndex={2}>
+        zIndex={20}>
         <Box
           w='15%'
           h='100%'
@@ -106,7 +100,7 @@ export default function NavBar({
           bgImage="url('logo.svg')"
           bgPosition='center'></Box>
         <Box w='100%' h='100%'>
-          {innerW > 880 ? (
+          {mediaQuery > defaultBreakpoint ? (
             <Flex
               w='100%'
               h='100%'

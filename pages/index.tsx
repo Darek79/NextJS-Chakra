@@ -1,11 +1,18 @@
 import Head from "next/head";
-import {Fragment} from "react";
+import {
+  Fragment,
+  useState,
+  useMemo,
+  useEffect,
+  useRef,
+  useContext,
+} from "react";
+import debounce from "lodash.debounce";
 import {
   Box,
   Flex,
   Center,
   Button,
-  useMediaQuery,
   Text,
   Drawer,
   DrawerBody,
@@ -16,21 +23,15 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import TextElement from "./../components/Elements/TextElement";
+import ServiceCardMain from "../components/Service/ServiceCardMain";
 import Services from "./../components/Elements/PageWrapper";
 import NavBar from "./../components/Elements/Navbar";
+import AboutCard from "./../components/About/AboutCard";
+import {AppContext} from "./../store";
 export default function Home(): JSX.Element {
-  const [isSmallerThan880] = useMediaQuery(
-    "(max-width:880px)"
-  );
+  const {breakpoint, innerW} = useContext(AppContext);
+  // let innerW = IsBreakpoint();
 
-  function switcher(
-    state: boolean,
-    arg1: any,
-    arg2: any
-  ): any {
-    return !state ? arg1 : arg2;
-  }
   return (
     <Fragment>
       <Head>
@@ -43,7 +44,7 @@ export default function Home(): JSX.Element {
           name='viewport'
           content='width=device-width, initial-scale=1.0'
         />
-        <title>Document</title>
+        <title>Mainpage</title>
       </Head>
       <NavBar
         bg='gray.900'
@@ -53,7 +54,10 @@ export default function Home(): JSX.Element {
         txtColor='gray.50'
         txtColorSideBar='gray.50'
         iconColor='gray.50'
+        mediaQuery={innerW}
+        defaultBreakpoint={breakpoint}
       />
+      {console.log(breakpoint, "object")}
       <Flex
         w='100vw'
         h='100vh'
@@ -61,16 +65,74 @@ export default function Home(): JSX.Element {
         bgRepeat='no-repeat'
         bgPosition='left'
         bgSize='cover'
-        justify={"start"}
+        justify={innerW > breakpoint ? "start" : "center"}
         align='center'>
         <Flex flexDir='column'>
-          <Text letterSpacing={2}>TECHNOLOGY</Text>
-          <Text letterSpacing={2}>& VISUAL AGENCY</Text>
-          <Button size='xs' variant='link'>
+          <Text
+            ml={
+              innerW > breakpoint ? Number(48) : Number(0)
+            }
+            fontWeight='bold'
+            h={innerW > breakpoint ? "60px" : "30px"}
+            color='gray.50'
+            fontSize={innerW > breakpoint ? "7xl" : "3xl"}
+            letterSpacing={2}>
+            TECHNOLOGY
+          </Text>
+          <Text
+            ml={
+              innerW > breakpoint ? Number(48) : Number(0)
+            }
+            fontWeight='bold'
+            h={innerW > breakpoint ? "60px" : "30px"}
+            color='gray.50'
+            fontSize={innerW > breakpoint ? "7xl" : "3xl"}
+            letterSpacing={2}>
+            & VISUAL AGENCY
+          </Text>
+          <Button
+            size='xs'
+            w={innerW > breakpoint ? "40%" : "100%"}
+            ml={
+              innerW > breakpoint ? Number(48) : Number(0)
+            }
+            fontSize={innerW > breakpoint ? "4xl" : "3xl"}
+            mt={innerW > breakpoint ? Number(5) : Number(0)}
+            variant='link'>
             LEARN MORE
           </Button>
         </Flex>
       </Flex>
+      <Services
+        width='100vw'
+        // height='100vh'
+        title='Services'
+        backC='gray.900'
+        innerW={innerW}
+        defaultCategoryColor='#80b918'
+        defaultCategoryTextColor='gray.50'
+        defaultBreakpoint={breakpoint}>
+        <ServiceCardMain />
+      </Services>
+      <Services
+        width='100vw'
+        height='100vh'
+        title='About'
+        backC='gray.100'
+        defaultCategoryColor='#80b918'
+        defaultCategoryTextColor='gray.50'
+        defaultBreakpoint={breakpoint}
+        innerW={innerW}>
+        <AboutCard
+          intro='who we are'
+          title='Live up to
+          your creative potential.'
+          text='Tempor ad mollit mollit dolor ut labore et velit commodo proident proident. Cillum dolor nisi pariatur ullamco proident veniam adipisicing. Pariatur deserunt nulla sit culpa cupidatat.'
+          textColor='gray.500'
+          introColor='gray.500'
+          titleColor='gray.900'
+        />
+      </Services>
     </Fragment>
   );
 }

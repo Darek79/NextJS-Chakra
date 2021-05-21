@@ -7,3 +7,5 @@ const categories: string[] = [
 ];
 
 export default categories;
+
+export const breakpoint = 880;
