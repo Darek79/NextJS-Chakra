@@ -2,12 +2,9 @@ import {
   Box,
   Flex,
   Center,
-  useMediaQuery,
   Text,
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -32,7 +29,6 @@ interface CompProps {
   defaultBreakpoint?: number;
 }
 
-
 export default function NavBar({
   bg,
   bgSideBar,
@@ -55,6 +51,10 @@ export default function NavBar({
         size='sm'>
         <DrawerOverlay />
         <DrawerContent>
+          <DrawerCloseButton
+            bg='gray.100'
+            _hover={{bg: "yellow.300"}}
+          />
           <DrawerBody
             bg={bg}
             display='flex'
@@ -129,4 +129,3 @@ export default function NavBar({
     </Fragment>
   );
 }
-

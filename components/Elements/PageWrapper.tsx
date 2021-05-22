@@ -1,17 +1,7 @@
 import {
   Box,
   Flex,
-  Center,
-  useMediaQuery,
   Text,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
 } from "@chakra-ui/react";
 import {breakpoint} from "../../page_defaults/defaults";
 

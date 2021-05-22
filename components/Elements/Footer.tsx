@@ -1,18 +1,4 @@
-import {
-  Box,
-  Flex,
-  Center,
-  useMediaQuery,
-  Text,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
-} from "@chakra-ui/react";
+import {Box, Flex} from "@chakra-ui/react";
 export default function Footer(): JSX.Element {
   return (
     <Flex bg='gray.900' w='100vw' h='30vh'>

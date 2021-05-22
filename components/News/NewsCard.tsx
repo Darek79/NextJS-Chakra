@@ -1,7 +1,5 @@
 import {Box, Text, Flex} from "@chakra-ui/react";
-import {useContext} from "react";
-import {AppContext} from "../../store";
-import Image from "next/image";
+
 interface CompProps {
   title?: string;
   titleColor?: string;

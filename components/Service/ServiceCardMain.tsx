@@ -4,14 +4,10 @@ import {AppContext} from "../../store";
 import One from "../SVG/1";
 import Two from "../SVG/2";
 import Three from "../SVG/3";
-import GenericNumber from "../SVG/GenericNumber";
 import {
-  Box,
+
   Flex,
-  Center,
-  useMediaQuery,
-  Text,
-  useDisclosure,
+
 } from "@chakra-ui/react";
 import {Fragment} from "react";
 export default function ServiceCardMain(): JSX.Element {

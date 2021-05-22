@@ -1,27 +1,13 @@
 import Head from "next/head";
 import {
   Fragment,
-  useState,
-  useMemo,
-  useEffect,
-  useRef,
   useContext,
 } from "react";
 import debounce from "lodash.debounce";
 import {
-  Box,
   Flex,
-  Center,
   Button,
   Text,
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
 } from "@chakra-ui/react";
 import ServiceCardMain from "../components/Service/ServiceCardMain";
 import Services from "./../components/Elements/PageWrapper";
