@@ -24,8 +24,9 @@ export default function AboutCard({
   return (
     <Flex
       flexDir={innerW > breakpoint ? "row" : "column"}
-      mt={innerW > breakpoint ? 0 : "150px"}
+      mt={innerW > breakpoint ? "100px" : "120px"}
       w='100vw'
+      h={innerW > breakpoint ? "100vh" : "auto"}
       align={innerW > breakpoint ? "center" : ""}
       justify={innerW > breakpoint ? "center" : ""}>
       <Box
@@ -67,8 +68,7 @@ export default function AboutCard({
         minW='320px'
         w={innerW > breakpoint ? "100%" : "auto"}
         maxW='500px'
-        p={2}
-        boxShadow='2xl'>
+        p={2}>
         <Image
           layout='responsive'
           width={500}

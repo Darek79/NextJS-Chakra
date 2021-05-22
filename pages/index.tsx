@@ -27,6 +27,7 @@ import ServiceCardMain from "../components/Service/ServiceCardMain";
 import Services from "./../components/Elements/PageWrapper";
 import NavBar from "./../components/Elements/Navbar";
 import AboutCard from "./../components/About/AboutCard";
+import NewsCard from "./../components/News/NewsCardMain";
 import {AppContext} from "./../store";
 export default function Home(): JSX.Element {
   const {breakpoint, innerW} = useContext(AppContext);
@@ -116,7 +117,7 @@ export default function Home(): JSX.Element {
       </Services>
       <Services
         width='100vw'
-        height='100vh'
+    
         title='About'
         backC='gray.100'
         defaultCategoryColor='#80b918'
@@ -132,6 +133,17 @@ export default function Home(): JSX.Element {
           introColor='gray.500'
           titleColor='gray.900'
         />
+      </Services>
+      <Services
+        width='100vw'
+        // height='100vh'
+        title='News'
+        backC='gray.100'
+        defaultCategoryColor='#80b918'
+        defaultCategoryTextColor='gray.50'
+        defaultBreakpoint={breakpoint}
+        innerW={innerW}>
+        <NewsCard />
       </Services>
     </Fragment>
   );

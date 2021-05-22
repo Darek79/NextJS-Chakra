@@ -1,9 +1,11 @@
 const categories: string[] = [
   "Home",
   "Services",
-  "Portofolio",
-  "Contact",
   "About",
+  "News",
+  "Portofolio",
+  "Pricing",
+  "Contact",
 ];
 
 export default categories;
