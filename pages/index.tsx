@@ -1,14 +1,6 @@
 import Head from "next/head";
-import {
-  Fragment,
-  useContext,
-} from "react";
-import debounce from "lodash.debounce";
-import {
-  Flex,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+import {Fragment, useContext} from "react";
+import {Flex, Button, Text} from "@chakra-ui/react";
 import ServiceCardMain from "../components/Service/ServiceCardMain";
 import Services from "./../components/Elements/PageWrapper";
 import NavBar from "./../components/Elements/Navbar";
@@ -45,7 +37,6 @@ export default function Home(): JSX.Element {
         mediaQuery={innerW}
         defaultBreakpoint={breakpoint}
       />
-      {console.log(breakpoint, "object")}
       <Flex
         w='100vw'
         h='100vh'
