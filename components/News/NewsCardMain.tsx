@@ -2,6 +2,7 @@ import {Flex} from "@chakra-ui/react";
 import NewsCard from "./NewsCard";
 import {useContext} from "react";
 import {AppContext} from "../../store";
+import {v4} from "uuid";
 export default function NewsCardMain(): JSX.Element {
   const {breakpoint, innerW} = useContext(AppContext);
   return (
@@ -11,6 +12,7 @@ export default function NewsCardMain(): JSX.Element {
       flexDir={innerW > breakpoint ? "row" : "column"}>
       {[1, 2, 3].map((el) => (
         <NewsCard
+        key={v4()}
           textColor='gray.500'
           titleColor='gray.900'
           breakpoint={breakpoint}

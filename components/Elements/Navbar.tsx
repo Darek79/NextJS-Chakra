@@ -14,17 +14,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import React, {
-  useState,
-  useRef,
-  Fragment,
-  useEffect,
-  useCallback,
-} from "react";
+import React, {Fragment} from "react";
 import {HamburgerIcon} from "@chakra-ui/icons";
-import Image from "next/image";
 import categories from "./../../page_defaults/defaults";
-import SideBar from "./SideBar";
 import TextElement from "./TextElement";
 import {v4} from "uuid";
 
@@ -40,9 +32,6 @@ interface CompProps {
   defaultBreakpoint?: number;
 }
 
-// bgSideBar='gray.900'
-//  txtSizeSideBar='4xl'
-// txtColorSideBar='gray.50'
 
 export default function NavBar({
   bg,
@@ -141,32 +130,3 @@ export default function NavBar({
   );
 }
 
-// {!isSmallerThan880 ? (
-//   <Flex
-//     w='100%'
-//     h='100%'
-//     align='center'
-//     justify='flex-end'>
-//     {categories &&
-//       categories.map((el) => (
-//         <Link
-//           key={el}
-//           href={el === "Home" ? "/" : `/${el}`}>
-//           <Box px={4}>
-//             {console.log(el)}
-//             <Text
-//               color={txtColor}
-//               fontSize={txtSize}
-//               letterSpacing={1}
-//               _hover={{
-//                 color: "yellow.300",
-//                 cursor: "pointer",
-//                 transition: "all 350ms",
-//               }}>
-//               {el.toUpperCase()}
-//             </Text>
-//           </Box>
-//         </Link>
-//       ))}
-//   </Flex>
-// ) : undefined}
