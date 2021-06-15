@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
 export default function IsBreakpoint(): number {
   const [state, setState] = useState<number | null>(null);
@@ -10,6 +13,7 @@ export default function IsBreakpoint(): number {
       500
     );
     window.addEventListener("resize", resizeHandler);
+
     return () =>
       window.removeEventListener("resize", resizeHandler);
   }, []);
