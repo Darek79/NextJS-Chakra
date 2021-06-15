@@ -1,8 +1,4 @@
-import {
-  Box,
-  Flex,
-  Text,
-} from "@chakra-ui/react";
+import {Box, Flex, Text} from "@chakra-ui/react";
 import {breakpoint} from "../../page_defaults/defaults";
 
 interface CompProps {
@@ -29,17 +25,19 @@ export default function PageWrapper({
   children,
 }: CompProps): JSX.Element {
   return (
-    <Flex w={width} h={height} pos='relative' bg={backC}>
-      <Flex pos='absolute' top={0} left={0}>
+    <Flex w={width} h={height} pos="relative" bg={backC}>
+      <Flex pos="absolute" top={0} left={0}>
         <Flex
           w={innerW > breakpoint ? "25vw" : "50vw"}
           h={24}
-          bg={defaultCategoryColor}>
+          bg={defaultCategoryColor}
+        >
           <Text
             color={defaultCategoryTextColor}
-            m='auto'
+            m="auto"
             letterSpacing={2}
-            fontSize={"2xl"}>
+            fontSize={"2xl"}
+          >
             {title.toUpperCase()}
           </Text>
         </Flex>

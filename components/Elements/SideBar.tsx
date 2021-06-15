@@ -25,7 +25,7 @@ export default function SideBar({
   txtColorSideBar,
   txtSizeSideBar,
 }: CompProps): JSX.Element {
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const {isOpen, onClose} = useDisclosure();
   return (
     <Drawer
       placement='right'

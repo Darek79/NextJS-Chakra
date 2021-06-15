@@ -1,20 +1,16 @@
 import ServiceCard from "./ServiceCard";
-import {useContext} from "react";
+import {useContext,Fragment} from "react";
 import {AppContext} from "../../store";
 import One from "../SVG/1";
 import Two from "../SVG/2";
 import Three from "../SVG/3";
 import {
-
   Flex,
-
 } from "@chakra-ui/react";
-import {Fragment} from "react";
 export default function ServiceCardMain(): JSX.Element {
   const {breakpoint, innerW} = useContext(AppContext);
   return (
     <Fragment>
-      {console.log(breakpoint, innerW)}
       <Flex
         m={innerW > breakpoint ? "" : "100px 0 20px 0 "}
         flexDir={innerW > breakpoint ? "row" : "column"}

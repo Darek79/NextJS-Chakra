@@ -45,22 +45,24 @@ export default function NavBar({
   return (
     <Fragment>
       <Drawer
-        placement='right'
+        placement="right"
         isOpen={isOpen}
         onClose={onClose}
-        size='sm'>
+        size="sm"
+      >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton
-            bg='gray.100'
+            bg="gray.100"
             _hover={{bg: "yellow.300"}}
           />
           <DrawerBody
             bg={bg}
-            display='flex'
-            flexDir='column'
-            alignItems='center'
-            justifyContent='start'>
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+            justifyContent="start"
+          >
             {categories &&
               categories.map((el) => (
                 <TextElement
@@ -68,7 +70,8 @@ export default function NavBar({
                   margin={5}
                   txtColor={txtColorSideBar}
                   txtSize={txtSizeSideBar}
-                  txtSpacing={2}>
+                  txtSpacing={2}
+                >
                   {el}
                 </TextElement>
               ))}
@@ -76,30 +79,34 @@ export default function NavBar({
         </DrawerContent>
       </Drawer>
       <Flex
-        w='100vw'
-        h='3rem'
+        w="100vw"
+        h="3rem"
         bg={bg}
-        pos='fixed'
-        zIndex={20}>
+        pos="fixed"
+        zIndex={20}
+      >
         <Box
-          w='15%'
-          h='100%'
+          w="15%"
+          h="100%"
           minW={44}
-          bgRepeat='no-repeat'
+          bgRepeat="no-repeat"
           bgImage="url('logo.svg')"
-          bgPosition='center'></Box>
-        <Box w='100%' h='100%'>
+          bgPosition="center"
+        ></Box>
+        <Box w="100%" h="100%">
           {mediaQuery > defaultBreakpoint ? (
             <Flex
-              w='100%'
-              h='100%'
-              align='center'
-              justify='flex-end'>
+              w="100%"
+              h="100%"
+              align="center"
+              justify="flex-end"
+            >
               {categories &&
                 categories.map((el) => (
                   <Link
                     key={el}
-                    href={el === "Home" ? "/" : `/${el}`}>
+                    href={el === "Home" ? "/" : `/${el}`}
+                  >
                     <Box px={4}>
                       <Text
                         color={txtColor}
@@ -109,7 +116,8 @@ export default function NavBar({
                           color: "yellow.300",
                           cursor: "pointer",
                           transition: "all 350ms",
-                        }}>
+                        }}
+                      >
                         {el.toUpperCase()}
                       </Text>
                     </Box>
@@ -119,10 +127,11 @@ export default function NavBar({
           ) : undefined}
         </Box>
         <Center
-          w='5%'
+          w="5%"
           minW={9}
           onClick={onOpen}
-          _hover={{cursor: "pointer"}}>
+          _hover={{cursor: "pointer"}}
+        >
           <HamburgerIcon w={8} h={8} color={iconColor} />
         </Center>
       </Flex>

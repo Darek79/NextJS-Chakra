@@ -1,15 +1,16 @@
 import {Box, Flex} from "@chakra-ui/react";
 export default function Footer(): JSX.Element {
   return (
-    <Flex bg='gray.900' w='100vw' h='30vh'>
+    <Flex bg="gray.900" w="100vw" h="30vh">
       <Box
-        m='auto'
-        w='15%'
-        h='100%'
+        m="auto"
+        w="15%"
+        h="100%"
         minW={44}
-        bgRepeat='no-repeat'
+        bgRepeat="no-repeat"
         bgImage="url('logo.svg')"
-        bgPosition='center'></Box>
+        bgPosition="center"
+      ></Box>
     </Flex>
   );
 }
