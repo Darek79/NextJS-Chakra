@@ -37,6 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-K8DZGCT');`,
           }}
         ></script>
+        <script src="https://www.googleoptimize.com/optimize.js?id=OPT-NWVDCGX"></script>
         <title>Mainpage</title>
       </Head>
       <NavBar
